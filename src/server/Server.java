@@ -43,7 +43,8 @@ public class Server implements IOController {
 			ReaderWriterPolicyFactory readerWriterPolicyFactory = parseArguments(args);
 			Server obj = new Server(readerWriterPolicyFactory);
 			IOController stub = (IOController) UnicastRemoteObject.exportObject(obj, 0);
-			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.getRegistry(1099
+								     );
 			registry.bind("IOController", stub);
 			System.err.println("Server ready with policy: " + readerWriterPolicyFactory.buildPolicy().getClass().getSimpleName());
 		} catch (Exception e) {
